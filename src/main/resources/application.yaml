@@ -1,0 +1,22 @@
+server:
+  port: ${MICROSERVICE_PORT}
+telegram:
+  bot:
+    name: ${TELEGRAM_BOT_NAME}
+    token: ${TELEGRAM_BOT_TOKEN}
+
+spring:
+  cloud:
+    vault:
+      host: ${VAULT_HOST}
+      port: ${VAULT_PORT}
+      token: ${VAULT_TOKEN}
+      scheme: ${VAULT_SCHEME}
+      kv:
+        enabled: true
+        backend: microservices
+        default-context: truth-or-dare-tg-bot-ui/${PROFILE}
+  profiles:
+    active: bot
+  config:
+    import: vault://
